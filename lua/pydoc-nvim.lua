@@ -1,16 +1,3 @@
-function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
-end
-
 -- Compares two version strings. E.g. 2.9 < 2.10
 function compare(a, b)
   local function padnum(n, rest) return ("%06d" .. (rest or "")):format(tonumber(n)) end
