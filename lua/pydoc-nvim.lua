@@ -74,7 +74,8 @@ M.available_versions = function()
     return versions
 end
 
-M.setup = function(version)
+M.setup = function(opts)
+    opts = opts or {}
     vim.api.nvim_create_user_command('PyDocVersion', _usercommand_select_version,
         {
             bang = true,
@@ -83,7 +84,7 @@ M.setup = function(version)
         }
     )
 
-    version = version or M.latest_version
+    version = opts["version"] or M.latest_version
 
     M.select_version(version, true)
 end
